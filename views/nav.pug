@@ -1,13 +1,13 @@
 extends layout
 
 block title
-	title Billy Janson's Page
+	title ${User}'s Page
 
 block mainContent
 	div.container
 		nav.navbar.is-light
 			div.navbar-brand
-				h1.navbar-item Billy's Website
+				h1.navbar-item ${User}'s Website
 			div.navbar-menu.is-active
 				a.navbar-item(href ='/') Home
 				a.navbar-item(href='/resume') Resume

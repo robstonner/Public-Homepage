@@ -1,7 +1,7 @@
 {
-  "name": "final_project",
+  "name": "public-homepage",
   "version": "1.0.0",
-  "description": "Final Project for CSC365",
+  "description": "Git Practice fot ACM",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
