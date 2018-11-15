@@ -1,0 +1,37 @@
+#fav {
+	border: 2px solid #CFB53B;
+	size: 24px;
+}
+body {
+	background-color: #000000;
+	color: #68b8df;
+	font-family: "Ariel";
+}
+div>em {
+	text-transform: uppercase;
+	padding: 20px;
+}
+span.why {
+	font-style: italic;
+}
+span{
+	color: red;
+}
+div{
+	color: gold;
+}
+div.why{
+	font-style: italic;
+}
+ol li {
+	font-weight: bolder;
+}
+img {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+#perfectTen{
+	font-weight: bolder;
+	font-style: italic;
+}
+

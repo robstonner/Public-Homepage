@@ -1,0 +1,173 @@
+extends nav
+
+block title
+	title Twitter Map
+
+append styles
+	style.
+		#map {
+			height: 680px;
+			width: 680px;
+			margin: auto
+		}
+		
+
+block content
+	.content
+		h1 Welcome to CSC365's Twitter Map!
+		div This site will take the Tweets with the Hashtag: #CSC365, pull from them the two digits afterwards and show the address and map of that location, if it exists. The first digit must be between -90 & 90, the second digit between -180 & 180. The top of the page will have the last 10 tweets with the #CSCS365, when I click on the tweet the bottom of the page will either display the address and map, or state the the Tweet does not meet the proper requirements. 
+	span#list
+		table.table.is-bordered.is-striped.is-narrow
+			thead
+				th Number
+				th CSC365 Tweets
+				th Author
+			tbody
+				tr
+					td One
+					td
+						a#item1.button #{statuses[0].text}
+					td #{statuses[0].user.name}
+				tr
+					td Two
+					td
+						a#item2.button #{statuses[1].text}
+					td #{statuses[1].user.name}
+				tr
+					td Three
+					td
+						a#item3.button #{statuses[2].text}
+					td #{statuses[2].user.name}
+				tr
+					td Four
+					td
+						a#item4.button #{statuses[3].text}
+					td #{statuses[3].user.name}
+				tr
+					td Five
+					td
+						a#item5.button #{statuses[4].text}
+					td #{statuses[4].user.name}
+				tr
+					td Six
+					td
+						a#item6.button #{statuses[5].text}
+					td #{statuses[5].user.name}
+				tr
+					td Seven
+					td
+						a#item7.button #{statuses[6].text}
+					td #{statuses[6].user.name}
+				tr
+					td Eight
+					td
+						a#item8.button #{statuses[7].text}
+					td #{statuses[7].user.name}
+				tr
+					td Nine
+					td
+						a#item9.button #{statuses[8].text}
+					td #{statuses[8].user.name}
+				tr
+					td Ten
+					td
+						a#item10.button #{statuses[9].text}
+					td #{statuses[9].user.name}
+	br
+	div -----------------------------------------------------------------------------------------------------------------------
+	div.content.is-large
+		h1 The Address Generator and Google Map!! 
+		div (Initially set to Cheek Hall (37.199303, -93.277057 ))
+		div#address
+	div#map
+	script#mapfunction.
+		let map;
+		function twitterMap() {
+			let cheek = {lat: 37.199303, lng: -93.277057};
+			map = new google.maps.Map(document.getElementById('map'), {
+				center: cheek,
+				zoom: 14
+				});
+			let marker = new google.maps.Marker({ 
+				position: cheek, 
+				map: map
+			});
+		};
+		function changeMap(tweet){
+			let tweetAry = tweet.split(' ');
+			if (!isNaN(tweetAry[1]) && !isNaN(tweetAry[2])) {
+				if (tweetAry[1] >= -90 && tweetAry[1] <= 90) {
+					if (tweetAry[2] >= -180 && tweetAry[2] <= 180) {
+						let LatLng = new google.maps.LatLng(tweetAry[1], tweetAry[2]);
+						let marker = new google.maps.Marker({
+							position: LatLng,
+							map: map
+						});
+						map.panTo(LatLng);
+					}
+				}
+			}
+		};
+		let button1 = document.getElementById('item1');
+		button1.addEventListener('click', function () {
+			changeMap(button1.innerText);
+		});
+
+		let button2 = document.getElementById('item2');
+		if (button2) {
+			button2.addEventListener('click', function () {
+				changeMap(button2.innerText);
+			});
+		}
+
+		let button3 = document.getElementById('item3');
+		if (button3) {
+			button3.addEventListener('click', function () {
+				changeMap(button3.innerText);
+			});
+		}
+		let button4 = document.getElementById('item4');
+		if (button4) {
+			button4.addEventListener('click', function () {
+				changeMap(button4.innerText);
+			});
+		}
+		let button5 = document.getElementById('item5');
+		if (button5) {
+			button5.addEventListener('click', function () {
+				changeMap(button5.innerText);
+			});
+		}
+		let button6 = document.getElementById('item6');
+		if (button6) {
+			button6.addEventListener('click', function () {
+				changeMap(button6.innerText);
+			});
+		}
+		let button7 = document.getElementById('item7');
+		if (button7) {
+			button7.addEventListener('click', function () {
+				changeMap(button7.innerText);
+			});
+		}
+		let button8 = document.getElementById('item8');
+		if (button8) {
+			button8.addEventListener('click', function () {
+				changeMap(button8.innerText);
+			});
+		}
+		let button9 = document.getElementById('item9');
+		if (button9) {
+			button9.addEventListener('click', function () {
+				changeMap(button9.innerText);
+			});
+		}
+		let button10 = document.getElementById('item10');
+		if (button10) {
+			button10.addEventListener('click', function () {
+				changeMap(button10.innerText);
+			});
+		}
+	script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0Lo0_DGek1qhb7nPS2jVsjbERmnAgVvs&callback=twitterMap")
+
+	script(src="/js/ajax.js")
